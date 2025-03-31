@@ -1,0 +1,4 @@
+[package]
+org = "niveathika"
+name = "kafkatosalesforce"
+version = "0.1.0"
