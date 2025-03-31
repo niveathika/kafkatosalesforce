@@ -1,8 +1,14 @@
 import ballerinax/kafka;
+import ballerina/io;
 
 listener kafka:Listener kafkaListener = new (bootstrapServers = kafka:DEFAULT_URL, groupId = "order-group-id", topics = "product_price_updates");
 
 service kafka:Service on kafkaListener {
+
+    function init() {
+        io:println("Kafka service started");
+    }
+    
     remote function onConsumerRecord(kafka:AnydataConsumerRecord[] records, kafka:Caller caller) returns error? {
         do {
             foreach kafka:AnydataConsumerRecord event in records {
